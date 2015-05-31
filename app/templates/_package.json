@@ -1,0 +1,34 @@
+{
+  "name": "<%= projectName %>",
+  "version": "0.0.0",
+  "description": "<%= description %>",
+  "main": "index.js",
+  "scripts": {
+    "prepublish": "npm test",
+    "test": "gulp test",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/<%= githubUser %>/<%= projectName %>.git"
+  },
+  "keywords": [],
+  "author": "<%= fullName %>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/<%= githubUser %>/<%= projectName %>/issues"
+  },
+  "homepage": "https://github.com/<%= githubUser %>/<%= projectName %>#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "coveralls": "^2.11.2",
+    "eslint-path-formatter": "^0.1.1",
+    "gulp": "^3.8.11",
+    "gulp-eslint": "^0.12.0",
+    "gulp-istanbul": "^0.9.0",
+    "gulp-jscs": "^1.6.0",
+    "gulp-jshint": "^1.11.0",
+    "gulp-mocha": "^2.1.0"
+  }
+}
