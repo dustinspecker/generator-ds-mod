@@ -1,5 +1,6 @@
 'use strict';
 var camelCase = require('camelcase')
+  , join = require('path').join
   , yeoman = require('yeoman-generator')
   , yosay = require('yosay')
   , Generator;
@@ -36,32 +37,41 @@ Generator.prototype.prompting = function () {
 };
 
 Generator.prototype.writing = function () {
-  [
-    '.editorconfig',
-    '.eslintrc',
-    '.gitattributes',
-    {gitignore: '.gitignore'},
-    '.jscsrc',
-    '.jshintrc',
-    '.travis.yml',
-    'index.js',
-    'Gulpfile.js',
-    '_LICENSE.md',
-    '_package.json',
-    '_README.md',
-    '_test.js'
-  ].forEach(function (file) {
+  var self = this;
+
+  function copy(file) {
     var dest, src;
 
     if (typeof file === 'string') {
-      return this.copyFile(file);
+      return self.copyFile(file);
     }
 
     // if file is an object
     src = Object.keys(file)[0];
     dest = file[src];
-    this.copyFile(src, dest);
-  }.bind(this));
+    self.copyFile(src, dest);
+  }
+
+  [
+    {gitignore: '.gitignore'},
+    '.travis.yml',
+    'index.js',
+    '_LICENSE.md',
+    '_package.json',
+    '_README.md',
+    '_test.js'
+  ].forEach(copy);
+
+  // use the project's files instead of the template directory
+  self.sourceRoot(join(__dirname, '../'));
+  [
+    '.editorconfig',
+    '.eslintrc',
+    '.gitattributes',
+    '.jscsrc',
+    '.jshintrc',
+    'Gulpfile.js'
+  ].forEach(copy);
 };
 
 Generator.prototype.install = function () {
