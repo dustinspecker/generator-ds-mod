@@ -10,7 +10,7 @@ describe('App Generator with installDependencies', function () {
 
   before(function (done) {
     helpers
-      .run(join(__dirname, '../app'))
+      .run(join(__dirname, '../generator/app'))
       .withOptions({
         'skip-install': false
       })
@@ -21,7 +21,7 @@ describe('App Generator with installDependencies', function () {
         githubUser: 'dustinspecker'
       })
       .withGenerators([
-        join(__dirname, '../app')
+        join(__dirname, '../generator/app')
       ])
       .on('ready', function (generator) {
         gen = generator;
@@ -40,7 +40,7 @@ describe('App generator', function () {
 
   before(function (done) {
     helpers
-      .run(join(__dirname, '../app'))
+      .run(join(__dirname, '../generator/app'))
       .withPrompts({
         projectName: 'awesome-mod',
         description: 'An awesome project.',
@@ -48,7 +48,7 @@ describe('App generator', function () {
         githubUser: 'dustinspecker'
       })
       .withGenerators([
-        join(__dirname, '../app')
+        join(__dirname, '../generator/app')
       ])
       .on('ready', function (generator) {
         gen = generator;
@@ -77,7 +77,7 @@ describe('App generator', function () {
       '.jshintrc',
       '.travis.yml',
       'index.js',
-      'Gulpfile.js',
+      'gulpfile.babel.js',
       'LICENSE.md',
       'package.json',
       'README.md',

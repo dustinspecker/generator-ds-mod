@@ -1,6 +1,10 @@
 {
+  "ecmaFeatures": {
+    "modules": true
+  },
   "env": {
-    "node": true
+    "node": true,
+    "es6": true
   },
   "rules": {
     "block-scoped-var": [2, true],
