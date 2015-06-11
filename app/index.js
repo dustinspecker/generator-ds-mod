@@ -91,18 +91,15 @@ export default class Generator extends Base {
 
   /**
    * Copy files
-   * @param {String} src - template source to copy
-   * @param {String} [dest] - destination to copy source to
+   * @param {String} src - template source name to copy
+   * @param {String} [dest] - destination name to copy source to
    */
-  copyFile(src, dest) {
+  copyFile(src, dest = src) {
     // yeoman runs all methods by default
     // this prevents yeoman from executing this as part of the context loop
     if (arguments.length === 0) {
       return;
     }
-
-    // if dest isn't set, assume copy to same file name
-    dest = dest || src;
 
     // if original src started with an '_' (template file)
     // then strip away '_' prefix for dest
