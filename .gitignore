@@ -1,3 +1,4 @@
 coverage/
-generator/
+app/
+!generator/app/
 node_modules/

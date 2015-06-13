@@ -68,8 +68,8 @@ export default class Generator extends Base {
       ].forEach(copy);
 
       // use the project's files instead of the template directory
-      // go up two directories because compiled code goes into generators/
-      self.sourceRoot(join(__dirname, '../../'));
+      // go up one directory because compiled code goes into ../../app/
+      self.sourceRoot(join(__dirname, '../'));
       [
         '.editorconfig',
         '.eslintrc',

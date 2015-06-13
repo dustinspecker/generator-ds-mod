@@ -9,11 +9,11 @@ import jshint from 'gulp-jshint';
 import mocha from 'gulp-mocha';
 
 const configFiles = './Gulpfiles.js'
-  , srcFiles = 'app/*.js'
-  , templateFiles = ['app/*/*', 'app/*/.travis.yml']
+  , srcFiles = 'generator/app/*.js'
+  , templateFiles = ['generator/app/*/*', 'generator/app/*/.travis.yml']
   , testFiles = 'test/*.js'
 
-  , destDir = './generator/';
+  , destDir = './app';
 
 gulp.task('clean', (cb) => {
   del(destDir, cb);
@@ -33,7 +33,7 @@ gulp.task('lint', ['clean'], () => {
 });
 
 gulp.task('compile', ['lint'], () => {
-  return gulp.src(srcFiles, {base: './'})
+  return gulp.src(srcFiles, {base: './generator/app/'})
     .pipe(babel({
       auxiliaryComment: 'istanbul ignore next',
       modules: 'common'
@@ -42,7 +42,7 @@ gulp.task('compile', ['lint'], () => {
 });
 
 gulp.task('copy:templates', ['compile'], () => {
-  return gulp.src(templateFiles, {base: './'})
+  return gulp.src(templateFiles, {base: './generator/app/'})
     .pipe(gulp.dest(destDir));
 });
 
