@@ -35,7 +35,7 @@ gulp.task('lint', ['clean'], () => {
 gulp.task('compile', ['lint'], () => {
   return gulp.src(srcFiles, {base: './generator/app/'})
     .pipe(babel({
-      auxiliaryComment: 'istanbul ignore next',
+      auxiliaryCommentBefore: 'istanbul ignore next',
       modules: 'common'
     }))
     .pipe(gulp.dest(destDir));
