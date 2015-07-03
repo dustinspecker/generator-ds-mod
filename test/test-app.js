@@ -35,7 +35,7 @@ describe('App Generator with installDependencies', function () {
   });
 });
 
-describe('App generator', function () {
+describe('Simple app generator', function () {
   var gen;
 
   before(function (done) {
@@ -87,6 +87,16 @@ describe('App generator', function () {
 
   it('should insert full name into LICENSE.md', function () {
     assert.fileContent('LICENSE.md', 'Dustin Specker');
+  });
+
+  describe('gulpfile.babel.js', function () {
+    it('should have correct srcFiles', function () {
+      assert.fileContent('gulpfile.babel.js', ', srcFiles = \'index.js\'');
+    });
+
+    it('should have correct testFiles', function () {
+      assert.fileContent('gulpfile.babel.js', ', testFiles = \'test.js\'');
+    });
   });
 
   describe('package.json', function () {
@@ -198,6 +208,49 @@ describe('App generator', function () {
 
     it('should expect to be defined', function () {
       assert.fileContent('test.js', 'expect(awesomeMod()).to.be.defined();');
+    });
+  });
+});
+
+describe('Complex app generator', function () {
+  before(function (done) {
+    helpers
+      .run(join(__dirname, '../app'))
+      .withPrompts({
+        projectName: 'awesome-mod',
+        description: 'An awesome project',
+        fullName: 'Dustin Specker',
+        githubUser: 'dustinspecker',
+        type: 'complex'
+      })
+      .on('end', done);
+  });
+
+  it('should create project files', function () {
+    assert.file([
+      '.editorconfig',
+      '.eslintrc',
+      '.gitattributes',
+      '.gitignore',
+      '.jscsrc',
+      '.jshintrc',
+      '.travis.yml',
+      'src/index.js',
+      'gulpfile.babel.js',
+      'LICENSE.md',
+      'package.json',
+      'README.md',
+      'test/test.js'
+    ]);
+  });
+
+  describe('gulpfile.babel.js', function () {
+    it('should have correct srcFiles', function () {
+      assert.fileContent('gulpfile.babel.js', ', srcFiles = \'src/*.js\'');
+    });
+
+    it('should have correct testFiles', function () {
+      assert.fileContent('gulpfile.babel.js', ', testFiles = \'test/*.js\'');
     });
   });
 });

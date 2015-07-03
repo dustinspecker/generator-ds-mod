@@ -18,9 +18,31 @@ Run `yo ds-mod` to create a module. ds-mod will ask you some questions:
 [?] What is the project description?
 [?] What is your full name?
 [?] What is your GitHub username?
+[?] Which type of project should be created?
 ```
 
-and will produce:
+A complex project will produce:
+```
+root/
+├── node_modules/
+├── src/
+│   └── index.js
+├── test/
+│   └── test.js
+├── .editorconfig
+├── .eslintrc
+├── .gitattributes
+├── .gitignore
+├── .jscsrc
+├── .jshintrc
+├── .travis.yml
+├── Gulpfile.js
+├── LICENSE.md
+├── package.json
+└── README.md
+```
+
+A simple project will produce:
 
 ```
 root/
