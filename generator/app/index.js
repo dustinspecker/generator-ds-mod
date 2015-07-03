@@ -84,7 +84,7 @@ export default class Generator extends Base {
   get install() {
     return function () {
       if (!this.options['skip-install']) {
-        this.installDependencies();
+        this.installDependencies({bower: false});
       }
     };
   }
