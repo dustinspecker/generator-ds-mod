@@ -8,7 +8,7 @@ import jscs from 'gulp-jscs';
 import jshint from 'gulp-jshint';
 import mocha from 'gulp-mocha';
 
-const configFiles = './Gulpfiles.js'
+const configFiles = './gulpfile.babel.js'
   , srcFiles = 'generator/app/*.js'
   , templateFiles = ['generator/app/*/*', 'generator/app/*/.travis.yml']
   , testFiles = 'test/*.js'
