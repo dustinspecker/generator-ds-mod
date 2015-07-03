@@ -60,6 +60,7 @@ export default class Generator extends Base {
       [
         {gitignore: '.gitignore'},
         '.travis.yml',
+        'gulpfile.babel.js',
         'index.js',
         '_LICENSE.md',
         '_package.json',
@@ -75,8 +76,7 @@ export default class Generator extends Base {
         '.eslintrc',
         '.gitattributes',
         '.jscsrc',
-        '.jshintrc',
-        'gulpfile.babel.js'
+        '.jshintrc'
       ].forEach(copy);
     };
   }

@@ -2,7 +2,7 @@
   "name": "<%= projectName %>",
   "version": "0.0.0",
   "description": "<%= description %>",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "prepublish": "npm test",
     "test": "gulp test",

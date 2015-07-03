@@ -2,3 +2,6 @@ coverage/
 app/
 !generator/app/
 node_modules/
+
+# Mac
+.DS_Store
