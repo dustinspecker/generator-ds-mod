@@ -1,14 +1,14 @@
 /*global describe, before, it*/
 'use strict';
-var assert = require('yeoman-generator').assert
-  , helpers = require('yeoman-generator').test
-  , join = require('path').join
-  , sinon = require('sinon');
+import {assert} from 'yeoman-generator';
+import {test as helpers} from 'yeoman-generator';
+import {join} from 'path';
+import sinon from 'sinon';
 
-describe('App Generator with installDependencies', function () {
-  var gen;
+describe('App Generator with installDependencies', () => {
+  let gen;
 
-  before(function (done) {
+  before((done) => {
     helpers
       .run(join(__dirname, '../app'))
       .withOptions({
@@ -23,22 +23,22 @@ describe('App Generator with installDependencies', function () {
       .withGenerators([
         join(__dirname, '../app')
       ])
-      .on('ready', function (generator) {
+      .on('ready', (generator) => {
         gen = generator;
         generator.installDependencies = sinon.spy();
       })
       .on('end', done);
   });
 
-  it('should install dependencies', function () {
+  it('should install dependencies', () => {
     assert(gen.installDependencies.calledOnce);
   });
 });
 
-describe('Simple app generator', function () {
-  var gen;
+describe('Simple app generator', () => {
+  let gen;
 
-  before(function (done) {
+  before((done) => {
     helpers
       .run(join(__dirname, '../app'))
       .withPrompts({
@@ -50,7 +50,7 @@ describe('Simple app generator', function () {
       .withGenerators([
         join(__dirname, '../app')
       ])
-      .on('ready', function (generator) {
+      .on('ready', (generator) => {
         gen = generator;
         generator.installDependencies = sinon.spy();
         generator.log = sinon.spy();
@@ -58,16 +58,16 @@ describe('Simple app generator', function () {
       .on('end', done);
   });
 
-  it('should welcome user', function () {
+  it('should welcome user', () => {
     assert(gen.log.calledOnce);
     assert(gen.log.calledWithMatch('Welcome to ds-mod!'));
   });
 
-  it('should not install dependencies', function () {
+  it('should not install dependencies', () => {
     assert(gen.installDependencies.callCount === 0);
   });
 
-  it('should create project files', function () {
+  it('should create project files', () => {
     assert.file([
       '.editorconfig',
       '.eslintrc',
@@ -85,7 +85,7 @@ describe('Simple app generator', function () {
     ]);
   });
 
-  it('should insert full name into LICENSE.md', function () {
+  it('should insert full name into LICENSE.md', () => {
     assert.fileContent('LICENSE.md', 'Dustin Specker');
   });
 
@@ -99,52 +99,52 @@ describe('Simple app generator', function () {
     });
   });
 
-  describe('package.json', function () {
-    it('should insert project name', function () {
+  describe('package.json', () => {
+    it('should insert project name', () => {
       assert.fileContent('package.json', '"name": "awesome-mod",');
     });
 
-    it('should insert project description', function () {
+    it('should insert project description', () => {
       assert.fileContent('package.json', '"description": "An awesome project.",');
     });
 
-    it('should insert project repository url', function () {
+    it('should insert project repository url', () => {
       assert.fileContent(
         'package.json',
         '"url": "git+https://github.com/dustinspecker/awesome-mod.git"'
       );
     });
 
-    it('should insert author', function () {
+    it('should insert author', () => {
       assert.fileContent('package.json', '"author": "Dustin Specker",');
     });
 
-    it('should insert bugs url', function () {
+    it('should insert bugs url', () => {
       assert.fileContent('package.json',
         '"url": "https://github.com/dustinspecker/awesome-mod/issues"'
       );
     });
 
-    it('should insert homepage', function () {
+    it('should insert homepage', () => {
       assert.fileContent('package.json',
         '"homepage": "https://github.com/dustinspecker/awesome-mod#readme",'
       );
     });
   });
 
-  describe('README.md', function () {
-    it('should insert project name as title', function () {
+  describe('README.md', () => {
+    it('should insert project name as title', () => {
       assert.fileContent('README.md', '# awesome-mod');
     });
 
-    it('should insert npm badge', function () {
+    it('should insert npm badge', () => {
       assert.fileContent(
         'README.md',
         '[![NPM version](https://badge.fury.io/js/awesome-mod.svg)](https://badge.fury.io/js/awesome-mod)'
       );
     });
 
-    it('should insert Travis badge', function () {
+    it('should insert Travis badge', () => {
       assert.fileContent(
         'README.md',
         '[![Build Status](https://travis-ci.org/dustinspecker/awesome-mod.svg)](https://travis-ci.org/' +
@@ -152,7 +152,7 @@ describe('Simple app generator', function () {
       );
     });
 
-    it('should insert Coveralls badge', function () {
+    it('should insert Coveralls badge', () => {
       assert.fileContent(
         'README.md',
         '[![Coverage Status](https://img.shields.io/coveralls/dustinspecker/awesome-mod.svg)]' +
@@ -160,7 +160,7 @@ describe('Simple app generator', function () {
       );
     });
 
-    it('should insert code climate badge', function () {
+    it('should insert code climate badge', () => {
       assert.fileContent(
         'README.md',
         '[![Code Climate](https://codeclimate.com/github/dustinspecker/awesome-mod/badges/gpa.svg)]' +
@@ -168,7 +168,7 @@ describe('Simple app generator', function () {
       );
     });
 
-    it('should insert dependencies badge', function () {
+    it('should insert dependencies badge', () => {
       assert.fileContent(
         'README.md',
         '[![Dependencies](https://david-dm.org/dustinspecker/awesome-mod.svg)]' +
@@ -176,7 +176,7 @@ describe('Simple app generator', function () {
       );
     });
 
-    it('should insert dev dependencies badge', function () {
+    it('should insert dev dependencies badge', () => {
       assert.fileContent(
         'README.md',
         '[![DevDependencies](https://david-dm.org/dustinspecker/awesome-mod/dev-status.svg)]' +
@@ -184,36 +184,36 @@ describe('Simple app generator', function () {
       );
     });
 
-    it('should insert description', function () {
+    it('should insert description', () => {
       assert.fileContent('README.md', '> An awesome project.');
     });
 
-    it('should insert install step', function () {
+    it('should insert install step', () => {
       assert.fileContent('README.md', 'npm install --save awesome-mod');
     });
 
-    it('should insert usage require', function () {
+    it('should insert usage require', () => {
       assert.fileContent('README.md', 'var awesomeMod = require(\'awesome-mod\');');
     });
   });
 
-  describe('test.js', function () {
-    it('should require project', function () {
+  describe('test.js', () => {
+    it('should require project', () => {
       assert.fileContent('test.js', 'var awesomeMod = require(\'./\')');
     });
 
-    it('should describe project', function () {
+    it('should describe project', () => {
       assert.fileContent('test.js', 'describe(\'awesome-mod\', function () {');
     });
 
-    it('should expect to be defined', function () {
+    it('should expect to be defined', () => {
       assert.fileContent('test.js', 'expect(awesomeMod()).to.be.defined();');
     });
   });
 });
 
-describe('Complex app generator', function () {
-  before(function (done) {
+describe('Complex app generator', () => {
+  before((done) => {
     helpers
       .run(join(__dirname, '../app'))
       .withPrompts({
@@ -226,7 +226,7 @@ describe('Complex app generator', function () {
       .on('end', done);
   });
 
-  it('should create project files', function () {
+  it('should create project files', () => {
     assert.file([
       '.editorconfig',
       '.eslintrc',
@@ -244,12 +244,12 @@ describe('Complex app generator', function () {
     ]);
   });
 
-  describe('gulpfile.babel.js', function () {
-    it('should have correct srcFiles', function () {
+  describe('gulpfile.babel.js', () => {
+    it('should have correct srcFiles', () => {
       assert.fileContent('gulpfile.babel.js', ', srcFiles = \'src/*.js\'');
     });
 
-    it('should have correct testFiles', function () {
+    it('should have correct testFiles', () => {
       assert.fileContent('gulpfile.babel.js', ', testFiles = \'test/*.js\'');
     });
   });
