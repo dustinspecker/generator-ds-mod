@@ -198,11 +198,11 @@ describe('Simple app generator', () => {
 
   describe('test.js', () => {
     it('should require project', () => {
-      assert.fileContent('test.js', 'var awesomeMod = require(\'./\')');
+      assert.fileContent('test.js', `import awesomeMod from './lib/';`);
     });
 
     it('should describe project', () => {
-      assert.fileContent('test.js', 'describe(\'awesome-mod\', function () {');
+      assert.fileContent('test.js', 'describe(\'awesome-mod\', () => {');
     });
 
     it('should expect to be defined', () => {

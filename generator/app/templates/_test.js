@@ -1,10 +1,10 @@
 /* global describe, it */
 'use strict';
-var <%= camelCase %> = require('./')
-  , expect = require('chai').expect;
+import <%= camelCase %> from './lib/';
+import {expect} from 'chai';
 
-describe('<%= projectName %>', function () {
-  it('should do something awesome', function () {
+describe('<%= projectName %>', () => {
+  it('should do something awesome', () => {
     expect(<%= camelCase %>()).to.be.defined();
   });
 });
