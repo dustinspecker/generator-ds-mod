@@ -31,22 +31,6 @@ export default class Generator extends Base {
         {
           name: 'githubUser',
           message: 'What is your GitHub username?'
-        },
-        {
-          name: 'type',
-          type: 'list',
-          message: 'Which type of project should be created?',
-          default: 'simple',
-          choices: [
-            {
-              name: 'Complex (src/ and test/ directories)',
-              value: 'complex'
-            },
-            {
-              name: 'Simple (index.js and test.js in root)',
-              value: 'simple'
-            }
-          ]
         }
       ], (props) => {
         props.camelCase = camelCase(props.projectName);
@@ -77,11 +61,11 @@ export default class Generator extends Base {
         {gitignore: '.gitignore'},
         '.travis.yml',
         '_gulpfile.babel.js',
-        {'index.js': (this.props.type === 'complex') ? join('src', 'index.js') : 'index.js'},
+        {'index.js': join('src', 'index.js')},
         '_LICENSE.md',
         '_package.json',
         '_README.md',
-        {'_test.js': (this.props.type === 'complex') ? join('test', 'test.js') : 'test.js'}
+        {'_test.js': join('test', 'test.js')}
       ].forEach(copy);
 
       // use the project's files instead of the template directory

@@ -21,7 +21,7 @@ Run `yo ds-mod` to create a module. ds-mod will ask you some questions:
 [?] Which type of project should be created?
 ```
 
-A complex project will produce:
+and will produce:
 ```
 root/
 ├── node_modules/
@@ -40,26 +40,6 @@ root/
 ├── LICENSE.md
 ├── package.json
 └── README.md
-```
-
-A simple project will produce:
-
-```
-root/
-├── node_modules/
-├── .editorconfig
-├── .eslintrc
-├── .gitattributes
-├── .gitignore
-├── .jscsrc
-├── .jshintrc
-├── .travis.yml
-├── index.js
-├── Gulpfile.js
-├── LICENSE.md
-├── package.json
-├── README.md
-└── test.js
 ```
 
 ## LICENSE

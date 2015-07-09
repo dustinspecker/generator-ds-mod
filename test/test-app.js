@@ -34,7 +34,7 @@ describe('App Generator with installDependencies', () => {
   });
 });
 
-describe('Simple app generator', () => {
+describe('App generator', () => {
   let gen;
 
   before((done) => {
@@ -68,6 +68,8 @@ describe('Simple app generator', () => {
 
   it('should create project files', () => {
     assert.file([
+      'src/index.js',
+      'test/test.js',
       '.editorconfig',
       '.eslintrc',
       '.gitattributes',
@@ -75,12 +77,10 @@ describe('Simple app generator', () => {
       '.jscsrc',
       '.jshintrc',
       '.travis.yml',
-      'index.js',
       'gulpfile.babel.js',
       'LICENSE.md',
       'package.json',
-      'README.md',
-      'test.js'
+      'README.md'
     ]);
   });
 
@@ -90,11 +90,11 @@ describe('Simple app generator', () => {
 
   describe('gulpfile.babel.js', function () {
     it('should have correct srcFiles', function () {
-      assert.fileContent('gulpfile.babel.js', ', srcFiles = \'index.js\'');
+      assert.fileContent('gulpfile.babel.js', ', srcFiles = \'src/*.js\'');
     });
 
     it('should have correct testFiles', function () {
-      assert.fileContent('gulpfile.babel.js', ', testFiles = \'test.js\'');
+      assert.fileContent('gulpfile.babel.js', ', testFiles = \'test/*.js\'');
     });
   });
 
@@ -196,60 +196,17 @@ describe('Simple app generator', () => {
     });
   });
 
-  describe('test.js', () => {
+  describe('test/test.js', () => {
     it('should require project', () => {
-      assert.fileContent('test.js', `import awesomeMod from './lib/';`);
+      assert.fileContent('test/test.js', `import awesomeMod from '../lib/';`);
     });
 
     it('should describe project', () => {
-      assert.fileContent('test.js', 'describe(\'awesome-mod\', () => {');
+      assert.fileContent('test/test.js', 'describe(\'awesome-mod\', () => {');
     });
 
     it('should expect to be defined', () => {
-      assert.fileContent('test.js', 'expect(awesomeMod()).to.be.defined();');
-    });
-  });
-});
-
-describe('Complex app generator', () => {
-  before((done) => {
-    helpers
-      .run(join(__dirname, '../app'))
-      .withPrompts({
-        projectName: 'awesome-mod',
-        description: 'An awesome project',
-        fullName: 'Dustin Specker',
-        githubUser: 'dustinspecker',
-        type: 'complex'
-      })
-      .on('end', done);
-  });
-
-  it('should create project files', () => {
-    assert.file([
-      '.editorconfig',
-      '.eslintrc',
-      '.gitattributes',
-      '.gitignore',
-      '.jscsrc',
-      '.jshintrc',
-      '.travis.yml',
-      'src/index.js',
-      'gulpfile.babel.js',
-      'LICENSE.md',
-      'package.json',
-      'README.md',
-      'test/test.js'
-    ]);
-  });
-
-  describe('gulpfile.babel.js', () => {
-    it('should have correct srcFiles', () => {
-      assert.fileContent('gulpfile.babel.js', ', srcFiles = \'src/*.js\'');
-    });
-
-    it('should have correct testFiles', () => {
-      assert.fileContent('gulpfile.babel.js', ', testFiles = \'test/*.js\'');
+      assert.fileContent('test/test.js', 'expect(awesomeMod()).to.be.defined();');
     });
   });
 });

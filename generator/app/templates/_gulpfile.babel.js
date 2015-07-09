@@ -10,8 +10,8 @@ import jshint from 'gulp-jshint';
 import mocha from 'gulp-mocha';
 
 const configFiles = './gulpfile.babel.js'
-  , srcFiles = '<% if (type === 'complex') { %>src/*.js<% } else { %>index.js<% } %>'
-  , testFiles = '<% if (type === 'complex') { %>test/*.js<% } else { %>test.js<% } %>'
+  , srcFiles = 'src/*.js'
+  , testFiles = 'test/*.js'
 
   , destDir = './lib';
 
