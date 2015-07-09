@@ -13,7 +13,7 @@ const configFiles = './gulpfile.babel.js'
   , srcFiles = 'src/*.js'
   , testFiles = 'test/*.js'
 
-  , destDir = './lib';
+  , destDir = './lib/';
 
 gulp.task('clean', (cb) => {
   del(destDir, cb);
@@ -44,7 +44,7 @@ gulp.task('compile', ['lint'], () => {
 gulp.task('build', ['compile']);
 
 gulp.task('test', ['build'], (cb) => {
-  gulp.src(['index.js'])
+  gulp.src([destDir + '*.js'])
     .pipe(istanbul())
     .pipe(istanbul.hookRequire())
     .on('finish', () => {
