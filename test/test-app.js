@@ -88,13 +88,13 @@ describe('App generator', () => {
     assert.fileContent('LICENSE.md', 'Dustin Specker');
   });
 
-  describe('gulpfile.babel.js', function () {
-    it('should have correct srcFiles', function () {
-      assert.fileContent('gulpfile.babel.js', ', srcFiles = \'src/*.js\'');
+  describe('gulpfile.babel.js', () => {
+    it('should have correct srcFiles', () => {
+      assert.fileContent('gulpfile.babel.js', `, srcFiles = 'src/*.js'`);
     });
 
-    it('should have correct testFiles', function () {
-      assert.fileContent('gulpfile.babel.js', ', testFiles = \'test/*.js\'');
+    it('should have correct testFiles', () => {
+      assert.fileContent('gulpfile.babel.js', `, testFiles = 'test/*.js'`);
     });
   });
 
@@ -192,7 +192,7 @@ describe('App generator', () => {
     });
 
     it('should insert usage require', () => {
-      assert.fileContent('README.md', 'var awesomeMod = require(\'awesome-mod\');');
+      assert.fileContent('README.md', `var awesomeMod = require('awesome-mod');`);
     });
   });
 
@@ -202,7 +202,7 @@ describe('App generator', () => {
     });
 
     it('should describe project', () => {
-      assert.fileContent('test/test.js', 'describe(\'awesome-mod\', () => {');
+      assert.fileContent('test/test.js', `describe('awesome-mod', () => {`);
     });
 
     it('should expect to be defined', () => {
