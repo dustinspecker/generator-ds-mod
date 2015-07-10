@@ -18,7 +18,6 @@ Run `yo ds-mod` to create a module. ds-mod will ask you some questions:
 [?] What is the project description?
 [?] What is your full name?
 [?] What is your GitHub username?
-[?] Which type of project should be created?
 ```
 
 and will produce:
