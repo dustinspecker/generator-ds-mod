@@ -74,6 +74,7 @@ describe('App generator', () => {
       '.eslintrc',
       '.gitattributes',
       '.gitignore',
+      '.npmignore',
       '.jscsrc',
       '.jshintrc',
       '.travis.yml',
