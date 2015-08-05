@@ -7,7 +7,7 @@ import sinon from 'sinon';
 describe('App Generator with installDependencies', () => {
   let gen;
 
-  before((done) => {
+  before(done => {
     helpers
       .run(join(__dirname, '../app'))
       .withOptions({
@@ -22,7 +22,7 @@ describe('App Generator with installDependencies', () => {
       .withGenerators([
         join(__dirname, '../app')
       ])
-      .on('ready', (generator) => {
+      .on('ready', generator => {
         gen = generator;
         generator.installDependencies = sinon.spy();
       })
@@ -37,7 +37,7 @@ describe('App Generator with installDependencies', () => {
 describe('App generator', () => {
   let gen;
 
-  before((done) => {
+  before(done => {
     helpers
       .run(join(__dirname, '../app'))
       .withPrompts({
@@ -49,7 +49,7 @@ describe('App generator', () => {
       .withGenerators([
         join(__dirname, '../app')
       ])
-      .on('ready', (generator) => {
+      .on('ready', generator => {
         gen = generator;
         generator.installDependencies = sinon.spy();
         generator.log = sinon.spy();

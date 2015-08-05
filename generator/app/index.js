@@ -32,7 +32,7 @@ export default class Generator extends Base {
           name: 'githubUser',
           message: 'What is your GitHub username?'
         }
-      ], (props) => {
+      ], props => {
         props.camelCase = camelCase(props.projectName);
         this.props = props;
         done();

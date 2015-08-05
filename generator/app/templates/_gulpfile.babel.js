@@ -15,9 +15,7 @@ const configFiles = './gulpfile.babel.js'
 
   , destDir = './lib/';
 
-gulp.task('clean', (cb) => {
-  del(destDir, cb);
-});
+gulp.task('clean', cb => del(destDir, cb));
 
 gulp.task('lint', ['clean'], () => {
   return gulp.src([configFiles, srcFiles, testFiles])
@@ -43,7 +41,7 @@ gulp.task('compile', ['lint'], () => {
 
 gulp.task('build', ['compile']);
 
-gulp.task('test', ['build'], (cb) => {
+gulp.task('test', ['build'], cb => {
   gulp.src([destDir + '*.js'])
     .pipe(istanbul())
     .pipe(istanbul.hookRequire())
