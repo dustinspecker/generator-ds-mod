@@ -195,6 +195,10 @@ describe('App generator', () => {
     it('should insert usage require', () => {
       assert.fileContent('README.md', `var awesomeMod = require('awesome-mod');`);
     });
+
+    it('should insert copyright info', () => {
+      assert.fileContent('README.md', 'MIT © [Dustin Specker](https://github.com/dustinspecker');
+    });
   });
 
   describe('test/test.js', () => {

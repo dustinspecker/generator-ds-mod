@@ -18,4 +18,4 @@ var <%= camelCase %> = require('<%= projectName %>');
 ```
 
 ## LICENSE
-MIT
+MIT © [<%= fullName %>](https://github.com/<%= githubUser %>)

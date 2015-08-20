@@ -42,4 +42,4 @@ root/
 ```
 
 ## LICENSE
-MIT
+MIT © [Dustin Specker](https://github.com/dustinspecker)
