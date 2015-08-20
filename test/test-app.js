@@ -111,24 +111,12 @@ describe('App generator', () => {
     it('should insert project repository url', () => {
       assert.fileContent(
         'package.json',
-        '"url": "git+https://github.com/dustinspecker/awesome-mod.git"'
+        '"repository": "dustinspecker/awesome-mod"'
       );
     });
 
     it('should insert author', () => {
       assert.fileContent('package.json', '"author": "Dustin Specker",');
-    });
-
-    it('should insert bugs url', () => {
-      assert.fileContent('package.json',
-        '"url": "https://github.com/dustinspecker/awesome-mod/issues"'
-      );
-    });
-
-    it('should insert homepage', () => {
-      assert.fileContent('package.json',
-        '"homepage": "https://github.com/dustinspecker/awesome-mod#readme",'
-      );
     });
   });
 

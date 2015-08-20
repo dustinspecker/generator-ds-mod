@@ -8,10 +8,7 @@
     "test": "gulp test",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dustinspecker/generator-ds-mod.git"
-  },
+  "repository": "dustinspecker/generator-ds-mod",
   "keywords": [
     "yeoman-generator",
     "node",
@@ -19,10 +16,9 @@
   ],
   "author": "Dustin Specker",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/dustinspecker/generator-ds-mod/issues"
-  },
-  "homepage": "https://github.com/dustinspecker/generator-ds-mod#readme",
+  "files": [
+    "app"
+  ],
   "dependencies": {
     "camelcase": "^1.1.0",
     "yeoman-generator": "^0.20.1",
