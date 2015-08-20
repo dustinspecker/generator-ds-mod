@@ -1,3 +1,6 @@
 {
-  "extends": "dustinspecker/esnext"
+  "extends": "dustinspecker/esnext",
+  plugins: [
+    "no-use-extend-native"
+  ]
 }
