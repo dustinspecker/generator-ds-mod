@@ -14,7 +14,9 @@
     "node",
     "module"
   ],
-  "author": "Dustin Specker",
+  "author": {
+    "name": "Dustin Specker"
+  },
   "license": "MIT",
   "files": [
     "app"

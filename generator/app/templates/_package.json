@@ -10,7 +10,9 @@
   },
   "repository": "<%= githubUser %>/<%= projectName %>",
   "keywords": [],
-  "author": "<%= fullName %>",
+  "author": {
+    "name": "<%= fullName %>"
+  },
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {

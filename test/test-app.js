@@ -115,8 +115,8 @@ describe('App generator', () => {
       );
     });
 
-    it('should insert author', () => {
-      assert.fileContent('package.json', '"author": "Dustin Specker",');
+    it(`should insert author's name`, () => {
+      assert.fileContent('package.json', '"name": "Dustin Specker"');
     });
   });
 
