@@ -35,6 +35,10 @@ export default class Generator extends Base {
         {
           name: 'email',
           message: 'What is your email?'
+        },
+        {
+          name: 'url',
+          message: 'What is your URL?'
         }
       ], props => {
         props.camelCase = camelCase(props.projectName);

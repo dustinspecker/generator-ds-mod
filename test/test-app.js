@@ -18,7 +18,8 @@ describe('App Generator with installDependencies', () => {
         description: 'An awesome project.',
         fullName: 'Dustin Specker',
         githubUser: 'dustinspecker',
-        email: 'myemail'
+        email: 'DustinSpecker@DustinSpcker.com',
+        url: 'https://github.com/dustinspecker'
       })
       .withGenerators([
         join(__dirname, '../app')
@@ -46,7 +47,8 @@ describe('App generator', () => {
         description: 'An awesome project.',
         fullName: 'Dustin Specker',
         githubUser: 'dustinspecker',
-        email: 'DustinSpecker@DustinSpecker.com'
+        email: 'DustinSpecker@DustinSpecker.com',
+        url: 'https://github.com/dustinspecker'
       })
       .withGenerators([
         join(__dirname, '../app')
@@ -122,7 +124,11 @@ describe('App generator', () => {
     });
 
     it(`should insert author's email`, () => {
-      assert.fileContent('package.json', '"email": "DustinSpecker@DustinSpecker.com"');
+      assert.fileContent('package.json', '"email": "DustinSpecker@DustinSpecker.com",');
+    });
+
+    it(`should insert author's URL`, () => {
+      assert.fileContent('package.json', '"url": "https://github.com/dustinspecker"');
     });
   });
 

@@ -12,7 +12,8 @@
   "keywords": [],
   "author": {
     "name": "<%= fullName %>",
-    "email": "<%= email %>"
+    "email": "<%= email %>",
+    "url": "<%= url %>"
   },
   "license": "MIT",
   "dependencies": {},

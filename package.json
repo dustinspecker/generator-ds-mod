@@ -16,7 +16,8 @@
   ],
   "author": {
     "name": "Dustin Specker",
-    "email": "DustinSpecker@DustinSpecker.com"
+    "email": "DustinSpecker@DustinSpecker.com",
+    "url": "https://github.com/dustinspecker"
   },
   "license": "MIT",
   "files": [
