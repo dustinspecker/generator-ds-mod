@@ -15,7 +15,8 @@
     "module"
   ],
   "author": {
-    "name": "Dustin Specker"
+    "name": "Dustin Specker",
+    "email": "DustinSpecker@DustinSpecker.com"
   },
   "license": "MIT",
   "files": [

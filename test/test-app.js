@@ -17,7 +17,8 @@ describe('App Generator with installDependencies', () => {
         projectName: 'awesome-mod',
         description: 'An awesome project.',
         fullName: 'Dustin Specker',
-        githubUser: 'dustinspecker'
+        githubUser: 'dustinspecker',
+        email: 'myemail'
       })
       .withGenerators([
         join(__dirname, '../app')
@@ -44,7 +45,8 @@ describe('App generator', () => {
         projectName: 'awesome-mod',
         description: 'An awesome project.',
         fullName: 'Dustin Specker',
-        githubUser: 'dustinspecker'
+        githubUser: 'dustinspecker',
+        email: 'DustinSpecker@DustinSpecker.com'
       })
       .withGenerators([
         join(__dirname, '../app')
@@ -116,7 +118,11 @@ describe('App generator', () => {
     });
 
     it(`should insert author's name`, () => {
-      assert.fileContent('package.json', '"name": "Dustin Specker"');
+      assert.fileContent('package.json', '"name": "Dustin Specker",');
+    });
+
+    it(`should insert author's email`, () => {
+      assert.fileContent('package.json', '"email": "DustinSpecker@DustinSpecker.com"');
     });
   });
 

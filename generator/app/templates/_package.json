@@ -11,7 +11,8 @@
   "repository": "<%= githubUser %>/<%= projectName %>",
   "keywords": [],
   "author": {
-    "name": "<%= fullName %>"
+    "name": "<%= fullName %>",
+    "email": "<%= email %>"
   },
   "license": "MIT",
   "dependencies": {},
