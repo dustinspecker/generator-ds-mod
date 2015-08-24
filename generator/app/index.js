@@ -26,19 +26,27 @@ export default class Generator extends Base {
         },
         {
           name: 'fullName',
-          message: 'What is your full name?'
+          store: true,
+          message: 'What is your full name?',
+          default: this.config.get('fullName')
         },
         {
           name: 'githubUser',
-          message: 'What is your GitHub username?'
+          store: true,
+          message: 'What is your GitHub username?',
+          default: this.config.get('githubUser')
         },
         {
           name: 'email',
-          message: 'What is your email?'
+          store: true,
+          message: 'What is your email?',
+          default: this.config.get('email')
         },
         {
           name: 'url',
-          message: 'What is your URL?'
+          store: true,
+          message: 'What is your URL?',
+          default: this.config.get('url')
         }
       ], props => {
         props.camelCase = camelCase(props.projectName);
