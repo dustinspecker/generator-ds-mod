@@ -4,7 +4,6 @@
   "description": "Yeoman Generator for creating Node modules",
   "main": "app/index.js",
   "scripts": {
-    "prepublish": "npm test",
     "test": "gulp test",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
