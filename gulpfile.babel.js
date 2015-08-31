@@ -16,7 +16,7 @@ const configFiles = './gulpfile.babel.js'
 
   , destDir = './app';
 
-gulp.task('clean', cb => del(destDir, cb));
+gulp.task('clean', () => del(destDir));
 
 gulp.task('lint', ['clean'], () => {
   return gulp.src([configFiles, srcFiles, testFiles])

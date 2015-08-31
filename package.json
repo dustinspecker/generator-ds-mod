@@ -30,7 +30,7 @@
   "devDependencies": {
     "babel-core": "^5.8.23",
     "coveralls": "^2.11.2",
-    "del": "^1.2.0",
+    "del": "^2.0.0",
     "eslint-config-dustinspecker": "^0.1.0",
     "eslint-path-formatter": "^0.1.1",
     "eslint-plugin-no-use-extend-native": "^0.1.4",
