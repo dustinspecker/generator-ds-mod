@@ -1,4 +1,5 @@
 'use strict';
+import alex from 'gulp-alex';
 import babel from 'gulp-babel';
 import babelCompiler from 'babel-core';
 import del from 'del';
@@ -18,7 +19,12 @@ const configFiles = './gulpfile.babel.js'
 
 gulp.task('clean', () => del(destDir));
 
-gulp.task('lint', ['clean'], () => {
+gulp.task('alex', () => {
+  return gulp.src('./README.md')
+    .pipe(alex({fail: true}));
+});
+
+gulp.task('lint', ['clean', 'alex'], () => {
   return gulp.src([configFiles, srcFiles, testFiles])
     .pipe(eslint())
     .pipe(eslint.formatEach('./node_modules/eslint-path-formatter'))
