@@ -1,6 +1,6 @@
 {
   "name": "generator-ds-mod",
-  "version": "2.10.0",
+  "version": "2.11.0",
   "description": "Yeoman Generator for creating Node modules",
   "main": "app/index.js",
   "scripts": {
