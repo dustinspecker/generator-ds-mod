@@ -1,7 +1,7 @@
 'use strict';
 import {Base} from 'yeoman-generator';
 import camelCase from 'camelcase';
-import {join} from 'path';
+import {join, sep} from 'path';
 import yosay from 'yosay';
 
 export default class Generator extends Base {
@@ -18,7 +18,8 @@ export default class Generator extends Base {
       this.prompt([
         {
           name: 'projectName',
-          message: 'What is the project name?'
+          message: 'What is the project name?',
+          default: () => process.cwd().split(sep).pop()
         },
         {
           name: 'description',

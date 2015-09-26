@@ -1,7 +1,7 @@
 /* global describe, before, it */
 'use strict';
 import {assert, test as helpers} from 'yeoman-generator';
-import {join} from 'path';
+import {join, sep} from 'path';
 import sinon from 'sinon';
 
 describe('App Generator with installDependencies', () => {
@@ -33,6 +33,34 @@ describe('App Generator with installDependencies', () => {
 
   it('should install dependencies', () => {
     assert(gen.installDependencies.calledOnce);
+  });
+});
+
+describe('App generator default projectName', () => {
+  before(done => {
+    helpers
+      .run(join(__dirname, '../app'))
+      .withPrompts({
+        description: 'An awesome project.',
+        fullName: 'Dustin Specker',
+        githubUser: 'dustinspecker',
+        email: 'DustinSpecker@DustinSpcker.com',
+        url: 'https://github.com/dustinspecker'
+      })
+      .withGenerators([
+        join(__dirname, '../app')
+      ])
+      .on('end', () => {
+        done();
+      });
+  });
+
+  it('should name app after current directory', () => {
+    // Open to suggestions for a better test
+    // Not sure how to stub process.cwd without messing up everything else
+    // Also, not sure how to mock a module AND have the mock be used with Yeoman's helpers' run function.
+    const projectName = process.cwd().split(sep).pop();
+    assert.fileContent('package.json', `"name": "${projectName}",`);
   });
 });
 
