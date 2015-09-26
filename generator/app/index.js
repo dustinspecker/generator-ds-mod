@@ -19,7 +19,7 @@ export default class Generator extends Base {
         {
           name: 'projectName',
           message: 'What is the project name?',
-          default: () => process.cwd().split(sep).pop()
+          default: process.cwd().split(sep).pop()
         },
         {
           name: 'description',
