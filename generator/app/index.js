@@ -11,7 +11,7 @@ export default class Generator extends Base {
 
   get prompting() {
     return function () {
-      var done = this.async();
+      let done = this.async();
 
       this.log(yosay('Welcome to ds-mod!'));
 
@@ -59,10 +59,10 @@ export default class Generator extends Base {
 
   get writing() {
     return function () {
-      var self = this;
+      let self = this;
 
       function copy(file) {
-        var dest, src;
+        let dest, src;
 
         if (typeof file === 'string') {
           return self.copyFile(file);
