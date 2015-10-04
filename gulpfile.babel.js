@@ -24,7 +24,7 @@ gulp.task('alex', () => {
     .pipe(alex({fail: true}));
 });
 
-gulp.task('lint', ['clean', 'alex'], () => {
+gulp.task('lint', ['alex'], () => {
   return gulp.src([configFiles, srcFiles, testFiles])
     .pipe(eslint())
     .pipe(eslint.formatEach('./node_modules/eslint-path-formatter'))
@@ -37,7 +37,7 @@ gulp.task('lint', ['clean', 'alex'], () => {
     .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('compile', ['lint'], () => {
+gulp.task('compile', ['clean', 'lint'], () => {
   return gulp.src(srcFiles, {base: './generator/app/'})
     .pipe(babel({
       auxiliaryCommentBefore: 'istanbul ignore next',
