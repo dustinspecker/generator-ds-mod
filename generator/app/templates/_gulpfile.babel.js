@@ -47,18 +47,19 @@ gulp.task('compile', ['lint'], () => {
 
 gulp.task('build', ['compile']);
 
-gulp.task('test', ['build'], cb => {
-  gulp.src([destDir + '*.js'])
+gulp.task('pre:test', ['build'], () => {
+  return gulp.src([destDir + '*/*.js'])
     .pipe(istanbul())
-    .pipe(istanbul.hookRequire())
-    .on('finish', () => {
-      gulp.src([testFiles])
-        .pipe(mocha({
-          compilers: {
-            js: babelCompiler
-          }
-        }))
-        .pipe(istanbul.writeReports())
-        .on('end', cb);
-    });
+    .pipe(istanbul.hookRequire());
+});
+
+gulp.task('test', ['pre:test'], () => {
+  return gulp.src([testFiles])
+    .pipe(mocha({
+      compilers: {
+        js: babelCompiler
+      }
+    }))
+    .pipe(istanbul.writeReports());
+});
 });
