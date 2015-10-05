@@ -4,11 +4,13 @@ import babel from 'gulp-babel';
 import babelCompiler from 'babel-core';
 import del from 'del';
 import gulp from 'gulp';
+import gulpIf from 'gulp-if';
 import eslint from 'gulp-eslint';
 import istanbul from 'gulp-istanbul';
 import jscs from 'gulp-jscs';
 import jshint from 'gulp-jshint';
 import mocha from 'gulp-mocha';
+import plumber from 'gulp-plumber';
 
 const cwd = process.cwd()
 
@@ -18,6 +20,8 @@ const cwd = process.cwd()
   , testFiles = 'test/*.js'
 
   , destDir = './app';
+
+let watching = false;
 
 gulp.task('clean', () => del(destDir));
 
@@ -30,14 +34,14 @@ gulp.task('lint', ['alex'], () => {
   return gulp.src([configFiles, srcFiles, testFiles])
     .pipe(eslint())
     .pipe(eslint.formatEach('./node_modules/eslint-path-formatter'))
-    .pipe(eslint.failOnError())
+    .pipe(gulpIf(!watching, eslint.failOnError()))
     .pipe(jscs({
       esnext: true
     }))
     .pipe(jscs.reporter())
     .pipe(jshint())
     .pipe(jshint.reporter('default'))
-    .pipe(jshint.reporter('fail'));
+    .pipe(gulpIf(!watching, jshint.reporter('fail')));
 });
 
 gulp.task('compile', ['clean', 'lint'], () => {
@@ -64,6 +68,7 @@ gulp.task('pre:test', ['build'], () => {
 
 gulp.task('test', ['pre:test'], () => {
   return gulp.src([testFiles])
+    .pipe(gulpIf(watching, plumber()))
     .pipe(mocha({
       compilers: {
         js: babelCompiler
@@ -78,5 +83,6 @@ gulp.task('test', ['pre:test'], () => {
 });
 
 gulp.task('watch', () => {
+  watching = true;
   gulp.watch([srcFiles, templateFiles, testFiles], ['test']);
 });
