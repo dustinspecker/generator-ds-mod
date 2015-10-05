@@ -10,7 +10,9 @@ import jscs from 'gulp-jscs';
 import jshint from 'gulp-jshint';
 import mocha from 'gulp-mocha';
 
-const configFiles = './gulpfile.babel.js'
+const cwd = process.cwd()
+
+  , configFiles = './gulpfile.babel.js'
   , srcFiles = 'generator/app/*.js'
   , templateFiles = ['generator/app/*/*', 'generator/app/*/.travis.yml']
   , testFiles = 'test/*.js'
@@ -67,6 +69,14 @@ gulp.task('test', ['pre:test'], () => {
         js: babelCompiler
       }
     }))
-    .pipe(istanbul.writeReports());
+    .pipe(istanbul.writeReports())
+    .on('end', () => {
+      // Something in this task changes the process CWD and causes chaos.
+      // This line changes back to the original CWD.
+      process.chdir(cwd);
+    });
 });
+
+gulp.task('watch', () => {
+  gulp.watch([srcFiles, templateFiles, testFiles], ['test']);
 });
