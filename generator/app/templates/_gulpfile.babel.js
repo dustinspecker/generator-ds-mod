@@ -78,5 +78,5 @@ gulp.task('test', ['pre:test'], () => {
 
 gulp.task('watch', () => {
   watching = true;
-  gulp.watch([srcFiles, templateFiles, testFiles], ['test']);
+  gulp.watch([srcFiles, testFiles], ['test']);
 });
