@@ -61,7 +61,7 @@ gulp.task('copy:templates', ['compile'], () => {
 gulp.task('build', ['copy:templates']);
 
 gulp.task('pre:test', ['build'], () => {
-  return gulp.src([destDir + '*/*.js'])
+  return gulp.src([destDir + '**/*.js'])
     .pipe(istanbul())
     .pipe(istanbul.hookRequire());
 });

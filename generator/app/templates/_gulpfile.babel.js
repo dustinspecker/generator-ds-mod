@@ -55,7 +55,7 @@ gulp.task('compile', ['clean', 'lint'], () => {
 gulp.task('build', ['compile']);
 
 gulp.task('pre:test', ['build'], () => {
-  return gulp.src([destDir + '*/*.js'])
+  return gulp.src([destDir + '**/*.js'])
     .pipe(istanbul())
     .pipe(istanbul.hookRequire());
 });
