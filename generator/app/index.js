@@ -83,6 +83,7 @@ module.exports = generator.Base.extend({
     // go up one directory because compiled code goes into ../../app/
     self.sourceRoot(join(__dirname, '../'));
     [
+      '.babelrc',
       '.editorconfig',
       '.eslintrc',
       '.gitattributes',

@@ -102,6 +102,7 @@ describe('App generator', () => {
     assert.file([
       'src/index.js',
       'test/test.js',
+      '.babelrc',
       '.editorconfig',
       '.eslintrc',
       '.gitattributes',
