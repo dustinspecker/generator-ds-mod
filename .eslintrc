@@ -1,4 +1,5 @@
 {
+  "parser": "babel-eslint",
   "extends": "dustinspecker/esnext",
   plugins: [
     "no-use-extend-native"
