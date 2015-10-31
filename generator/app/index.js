@@ -1,111 +1,101 @@
 'use strict';
-import {Base} from 'yeoman-generator';
 import camelCase from 'camelcase';
+import generator from 'yeoman-generator';
 import {join, sep} from 'path';
 import yosay from 'yosay';
 
-export default class Generator extends Base {
-  constructor(...args) {
-    super(...args);
-  }
+module.exports = generator.Base.extend({
+  prompting() {
+    let done = this.async();
 
-  get prompting() {
-    return function () {
-      let done = this.async();
+    this.log(yosay('Welcome to ds-mod!'));
 
-      this.log(yosay('Welcome to ds-mod!'));
+    this.prompt([
+      {
+        name: 'projectName',
+        message: 'What is the project name?',
+        default: process.cwd().split(sep).pop()
+      },
+      {
+        name: 'description',
+        message: 'What is the project description?'
+      },
+      {
+        name: 'fullName',
+        store: true,
+        message: 'What is your full name?',
+        default: this.config.get('fullName')
+      },
+      {
+        name: 'githubUser',
+        store: true,
+        message: 'What is your GitHub username?',
+        default: this.config.get('githubUser')
+      },
+      {
+        name: 'email',
+        store: true,
+        message: 'What is your email?',
+        default: this.config.get('email')
+      },
+      {
+        name: 'url',
+        store: true,
+        message: 'What is your URL?',
+        default: this.config.get('url')
+      }
+    ], props => {
+      props.camelCase = camelCase(props.projectName);
+      this.props = props;
+      done();
+    });
+  },
 
-      this.prompt([
-        {
-          name: 'projectName',
-          message: 'What is the project name?',
-          default: process.cwd().split(sep).pop()
-        },
-        {
-          name: 'description',
-          message: 'What is the project description?'
-        },
-        {
-          name: 'fullName',
-          store: true,
-          message: 'What is your full name?',
-          default: this.config.get('fullName')
-        },
-        {
-          name: 'githubUser',
-          store: true,
-          message: 'What is your GitHub username?',
-          default: this.config.get('githubUser')
-        },
-        {
-          name: 'email',
-          store: true,
-          message: 'What is your email?',
-          default: this.config.get('email')
-        },
-        {
-          name: 'url',
-          store: true,
-          message: 'What is your URL?',
-          default: this.config.get('url')
-        }
-      ], props => {
-        props.camelCase = camelCase(props.projectName);
-        this.props = props;
-        done();
-      });
-    };
-  }
+  writing() {
+    let self = this;
 
-  get writing() {
-    return function () {
-      let self = this;
+    function copy(file) {
+      let dest, src;
 
-      function copy(file) {
-        let dest, src;
-
-        if (typeof file === 'string') {
-          return self.copyFile(file);
-        }
-
-        // if file is an object
-        src = Object.keys(file)[0];
-        dest = file[src];
-        self.copyFile(src, dest);
+      if (typeof file === 'string') {
+        return self.copyFile(file);
       }
 
-      [
-        {gitignore: '.gitignore'},
-        {npmignore: '.npmignore'},
-        '.travis.yml',
-        '_gulpfile.babel.js',
-        {'index.js': join('src', 'index.js')},
-        '_LICENSE.md',
-        '_package.json',
-        '_README.md',
-        {'_test.js': join('test', 'test.js')}
-      ].forEach(copy);
+      // if file is an object
+      src = Object.keys(file)[0];
+      dest = file[src];
+      self.copyFile(src, dest);
+    }
 
-      // use the project's files instead of the template directory
-      // go up one directory because compiled code goes into ../../app/
-      self.sourceRoot(join(__dirname, '../'));
-      [
-        '.editorconfig',
-        '.eslintrc',
-        '.gitattributes',
-        '.jscsrc',
-        '.jshintrc'
-      ].forEach(copy);
-    };
-  }
+    [
+      {gitignore: '.gitignore'},
+      {npmignore: '.npmignore'},
+      '.travis.yml',
+      '_gulpfile.babel.js',
+      {'index.js': join('src', 'index.js')},
+      '_LICENSE.md',
+      '_package.json',
+      '_README.md',
+      {'_test.js': join('test', 'test.js')}
+    ].forEach(copy);
 
-  get install() {
-    return function () {
-      if (!this.options['skip-install']) {
-        this.installDependencies({bower: false});
-      }
-    };
-  }
+    // use the project's files instead of the template directory
+    // go up one directory because compiled code goes into ../../app/
+    self.sourceRoot(join(__dirname, '../'));
+    [
+      '.editorconfig',
+      '.eslintrc',
+      '.gitattributes',
+      '.jscsrc',
+      '.jshintrc'
+    ].forEach(copy);
+  },
+
+  install() {
+    if (!this.options['skip-install']) {
+      this.installDependencies({bower: false});
+    }
+  },
 
   /**
    * Copy files
@@ -131,4 +121,4 @@ export default class Generator extends Base {
       this.props
     );
   }
-}
+});
