@@ -28,7 +28,7 @@
     "yosay": "^1.0.4"
   },
   "devDependencies": {
-    "babel-core": "^5.8.23",
+    "babel-core": "^6.0.14",
     "coveralls": "^2.11.2",
     "del": "^2.0.0",
     "eslint-config-dustinspecker": "^0.1.0",
