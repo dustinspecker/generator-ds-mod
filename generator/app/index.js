@@ -6,7 +6,7 @@ import yosay from 'yosay';
 
 module.exports = generator.Base.extend({
   prompting() {
-    let done = this.async();
+    const done = this.async();
 
     this.log(yosay('Welcome to ds-mod!'));
 
@@ -52,7 +52,7 @@ module.exports = generator.Base.extend({
   },
 
   writing() {
-    let self = this;
+    const self = this;
 
     function copy(file) {
       let dest, src;
@@ -110,15 +110,9 @@ module.exports = generator.Base.extend({
       return;
     }
 
-    // if original src started with an '_' (template file)
-    // then strip away '_' prefix for dest
-    if (dest.indexOf('_') === 0) {
-      dest = dest.substr(1, dest.length);
-    }
-
     this.fs.copyTpl(
       this.templatePath(src),
-      this.destinationPath(dest),
+      this.destinationPath(dest.replace(/^_/, '')),
       this.props
     );
   }
