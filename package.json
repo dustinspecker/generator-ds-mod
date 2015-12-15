@@ -24,7 +24,7 @@
   ],
   "dependencies": {
     "camelcase": "^2.0.0",
-    "yeoman-generator": "^0.21.1",
+    "yeoman-generator": "^0.22.0",
     "yosay": "^1.0.4"
   },
   "devDependencies": {
@@ -48,6 +48,8 @@
     "gulp-mocha": "^2.1.0",
     "gulp-plumber": "^1.0.1",
     "jshint": "^2.8.0",
-    "sinon": "^1.14.1"
+    "sinon": "^1.14.1",
+    "yeoman-assert": "^2.1.1",
+    "yeoman-test": "^1.0.0"
   }
 }
