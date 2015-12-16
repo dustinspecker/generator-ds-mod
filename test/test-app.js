@@ -1,6 +1,7 @@
 /* global describe, before, it */
 'use strict';
-import {assert, test as helpers} from 'yeoman-generator';
+import assert from 'yeoman-assert';
+import helpers from 'yeoman-test';
 import {join, sep} from 'path';
 import sinon from 'sinon';
 
