@@ -28,7 +28,7 @@
     "yosay": "^1.0.4"
   },
   "devDependencies": {
-    "babel-core": "^6.0.12",
+    "babel-core": "^6.3.26",
     "babel-eslint": "^4.1.3",
     "babel-preset-es2015": "^6.0.12",
     "coveralls": "^2.11.2",
