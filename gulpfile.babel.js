@@ -1,16 +1,14 @@
-'use strict';
-import alex from 'gulp-alex';
-import babel from 'gulp-babel';
-import babelCompiler from 'babel-core';
-import del from 'del';
-import gulp from 'gulp';
-import gulpIf from 'gulp-if';
-import eslint from 'gulp-eslint';
-import istanbul from 'gulp-istanbul';
-import jscs from 'gulp-jscs';
-import jshint from 'gulp-jshint';
-import mocha from 'gulp-mocha';
-import plumber from 'gulp-plumber';
+'use strict'
+import alex from 'gulp-alex'
+import babel from 'gulp-babel'
+import babelCompiler from 'babel-core'
+import del from 'del'
+import gulp from 'gulp'
+import gulpIf from 'gulp-if'
+import eslint from 'gulp-eslint'
+import istanbul from 'gulp-istanbul'
+import mocha from 'gulp-mocha'
+import plumber from 'gulp-plumber'
 
 const cwd = process.cwd()
 
@@ -19,50 +17,44 @@ const cwd = process.cwd()
   , templateFiles = ['generator/app/*/*', 'generator/app/*/.travis.yml']
   , testFiles = 'test/*.js'
 
-  , destDir = './app';
+  , destDir = './app'
 
-let watching = false;
+let watching = false
 
-gulp.task('clean', () => del(destDir));
+gulp.task('clean', () => del(destDir))
 
 gulp.task('alex', () =>
   gulp.src('./README.md')
     .pipe(alex())
     .pipe(alex.reporter())
     .pipe(alex.reporter('fail'))
-);
+)
 
 gulp.task('lint', ['alex'], () =>
   gulp.src([configFiles, srcFiles, testFiles])
     .pipe(eslint())
     .pipe(eslint.formatEach('./node_modules/eslint-path-formatter'))
     .pipe(gulpIf(!watching, eslint.failOnError()))
-    .pipe(jscs())
-    .pipe(jscs.reporter())
-    .pipe(jscs.reporter('fail'))
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'))
-    .pipe(gulpIf(!watching, jshint.reporter('fail')))
-);
+)
 
 gulp.task('compile', ['clean', 'lint'], () =>
   gulp.src(srcFiles, {base: './generator/app/'})
     .pipe(babel())
     .pipe(gulp.dest(destDir))
-);
+)
 
 gulp.task('copy:templates', ['compile'], () =>
   gulp.src(templateFiles, {base: './generator/app/'})
     .pipe(gulp.dest(destDir))
-);
+)
 
-gulp.task('build', ['copy:templates']);
+gulp.task('build', ['copy:templates'])
 
 gulp.task('pre:test', ['build'], () =>
   gulp.src([`${destDir}**/*.js`])
     .pipe(istanbul())
     .pipe(istanbul.hookRequire())
-);
+)
 
 gulp.task('test', ['pre:test'], () =>
   gulp.src([testFiles])
@@ -76,11 +68,11 @@ gulp.task('test', ['pre:test'], () =>
     .on('end', () => {
       // Something in this task changes the process CWD and causes chaos.
       // This line changes back to the original CWD.
-      process.chdir(cwd);
+      process.chdir(cwd)
     })
-);
+)
 
 gulp.task('watch', () => {
-  watching = true;
-  gulp.watch([srcFiles, templateFiles, testFiles], ['test']);
-});
+  watching = true
+  gulp.watch([srcFiles, templateFiles, testFiles], ['test'])
+})
