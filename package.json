@@ -23,7 +23,7 @@
     "app"
   ],
   "dependencies": {
-    "camelcase": "^2.0.0",
+    "camelcase": "^2.1.0",
     "yeoman-generator": "^0.22.0",
     "yosay": "^1.0.4"
   },
