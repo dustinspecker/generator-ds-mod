@@ -110,7 +110,6 @@ describe('App generator', () => {
       '.gitignore',
       '.npmignore',
       '.travis.yml',
-      'gulpfile.babel.js',
       'LICENSE.md',
       'package.json',
       'README.md'
@@ -119,16 +118,6 @@ describe('App generator', () => {
 
   it('should insert full name into LICENSE.md', () => {
     assert.fileContent('LICENSE.md', 'Dustin Specker')
-  })
-
-  describe('gulpfile.babel.js', () => {
-    it('should have correct srcFiles', () => {
-      assert.fileContent('gulpfile.babel.js', `, srcFiles = 'src/*.js'`)
-    })
-
-    it('should have correct testFiles', () => {
-      assert.fileContent('gulpfile.babel.js', `, testFiles = 'test/*.js'`)
-    })
   })
 
   describe('package.json', () => {

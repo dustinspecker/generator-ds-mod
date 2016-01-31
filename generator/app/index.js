@@ -70,7 +70,6 @@ module.exports = generator.Base.extend({
     ;[{gitignore: '.gitignore'},
       {npmignore: '.npmignore'},
       '.travis.yml',
-      '_gulpfile.babel.js',
       {'index.js': join('src', 'index.js')},
       '_LICENSE.md',
       '_package.json',
