@@ -20,7 +20,11 @@
   },
   "license": "MIT",
   "files": [
-    "app"
+    "app",
+    ".babelrc",
+    ".editorconfig",
+    ".eslintrc",
+    ".gitattributes"
   ],
   "dependencies": {
     "camelcase": "^2.0.0",
