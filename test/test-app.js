@@ -1,12 +1,12 @@
 /* global describe, before, it */
-'use strict';
-import assert from 'yeoman-assert';
-import helpers from 'yeoman-test';
-import {join, sep} from 'path';
-import sinon from 'sinon';
+'use strict'
+import assert from 'yeoman-assert'
+import helpers from 'yeoman-test'
+import {join, sep} from 'path'
+import sinon from 'sinon'
 
 describe('App Generator with installDependencies', () => {
-  let gen;
+  let gen
 
   before(done => {
     helpers
@@ -26,16 +26,16 @@ describe('App Generator with installDependencies', () => {
         join(__dirname, '../app')
       ])
       .on('ready', generator => {
-        gen = generator;
-        generator.installDependencies = sinon.spy();
+        gen = generator
+        generator.installDependencies = sinon.spy()
       })
-      .on('end', done);
-  });
+      .on('end', done)
+  })
 
   it('should install dependencies', () => {
-    assert(gen.installDependencies.calledOnce);
-  });
-});
+    assert(gen.installDependencies.calledOnce)
+  })
+})
 
 describe('App generator default projectName', () => {
   before(done => {
@@ -52,21 +52,21 @@ describe('App generator default projectName', () => {
         join(__dirname, '../app')
       ])
       .on('end', () => {
-        done();
-      });
-  });
+        done()
+      })
+  })
 
   it('should name app after current directory', () => {
     // Open to suggestions for a better test
     // Not sure how to stub process.cwd without messing up everything else
     // Also, not sure how to mock a module AND have the mock be used with Yeoman's helpers' run function.
-    const projectName = process.cwd().split(sep).pop();
-    assert.fileContent('package.json', `"name": "${projectName}",`);
-  });
-});
+    const projectName = process.cwd().split(sep).pop()
+    assert.fileContent('package.json', `"name": "${projectName}",`)
+  })
+})
 
 describe('App generator', () => {
-  let gen;
+  let gen
 
   before(done => {
     helpers
@@ -83,21 +83,21 @@ describe('App generator', () => {
         join(__dirname, '../app')
       ])
       .on('ready', generator => {
-        gen = generator;
-        generator.installDependencies = sinon.spy();
-        generator.log = sinon.spy();
+        gen = generator
+        generator.installDependencies = sinon.spy()
+        generator.log = sinon.spy()
       })
-      .on('end', done);
-  });
+      .on('end', done)
+  })
 
   it('should welcome user', () => {
-    assert(gen.log.calledOnce);
-    assert(gen.log.calledWithMatch('Welcome to ds-mod!'));
-  });
+    assert(gen.log.calledOnce)
+    assert(gen.log.calledWithMatch('Welcome to ds-mod!'))
+  })
 
   it('should not install dependencies', () => {
-    assert(gen.installDependencies.callCount === 0);
-  });
+    assert(gen.installDependencies.callCount === 0)
+  })
 
   it('should create project files', () => {
     assert.file([
@@ -109,139 +109,137 @@ describe('App generator', () => {
       '.gitattributes',
       '.gitignore',
       '.npmignore',
-      '.jscsrc',
-      '.jshintrc',
       '.travis.yml',
       'gulpfile.babel.js',
       'LICENSE.md',
       'package.json',
       'README.md'
-    ]);
-  });
+    ])
+  })
 
   it('should insert full name into LICENSE.md', () => {
-    assert.fileContent('LICENSE.md', 'Dustin Specker');
-  });
+    assert.fileContent('LICENSE.md', 'Dustin Specker')
+  })
 
   describe('gulpfile.babel.js', () => {
     it('should have correct srcFiles', () => {
-      assert.fileContent('gulpfile.babel.js', `, srcFiles = 'src/*.js'`);
-    });
+      assert.fileContent('gulpfile.babel.js', `, srcFiles = 'src/*.js'`)
+    })
 
     it('should have correct testFiles', () => {
-      assert.fileContent('gulpfile.babel.js', `, testFiles = 'test/*.js'`);
-    });
-  });
+      assert.fileContent('gulpfile.babel.js', `, testFiles = 'test/*.js'`)
+    })
+  })
 
   describe('package.json', () => {
     it('should insert project name', () => {
-      assert.fileContent('package.json', '"name": "awesome-mod",');
-    });
+      assert.fileContent('package.json', '"name": "awesome-mod",')
+    })
 
     it('should insert project description', () => {
-      assert.fileContent('package.json', '"description": "An awesome project.",');
-    });
+      assert.fileContent('package.json', '"description": "An awesome project.",')
+    })
 
     it('should insert project repository url', () => {
       assert.fileContent(
         'package.json',
         '"repository": "dustinspecker/awesome-mod"'
-      );
-    });
+      )
+    })
 
     it(`should insert author's name`, () => {
-      assert.fileContent('package.json', '"name": "Dustin Specker",');
-    });
+      assert.fileContent('package.json', '"name": "Dustin Specker",')
+    })
 
     it(`should insert author's email`, () => {
-      assert.fileContent('package.json', '"email": "DustinSpecker@DustinSpecker.com",');
-    });
+      assert.fileContent('package.json', '"email": "DustinSpecker@DustinSpecker.com",')
+    })
 
     it(`should insert author's URL`, () => {
-      assert.fileContent('package.json', '"url": "https://github.com/dustinspecker"');
-    });
-  });
+      assert.fileContent('package.json', '"url": "https://github.com/dustinspecker"')
+    })
+  })
 
   describe('README.md', () => {
     it('should insert project name as title', () => {
-      assert.fileContent('README.md', '# awesome-mod');
-    });
+      assert.fileContent('README.md', '# awesome-mod')
+    })
 
     it('should insert npm badge', () => {
       assert.fileContent(
         'README.md',
         '[![NPM version](https://badge.fury.io/js/awesome-mod.svg)](https://badge.fury.io/js/awesome-mod)'
-      );
-    });
+      )
+    })
 
     it('should insert Travis badge', () => {
       assert.fileContent(
         'README.md',
         '[![Build Status](https://travis-ci.org/dustinspecker/awesome-mod.svg)](https://travis-ci.org/' +
           'dustinspecker/awesome-mod)'
-      );
-    });
+      )
+    })
 
     it('should insert Coveralls badge', () => {
       assert.fileContent(
         'README.md',
         '[![Coverage Status](https://img.shields.io/coveralls/dustinspecker/awesome-mod.svg)]' +
           '(https://coveralls.io/r/dustinspecker/awesome-mod?branch=master)'
-      );
-    });
+      )
+    })
 
     it('should insert code climate badge', () => {
       assert.fileContent(
         'README.md',
         '[![Code Climate](https://codeclimate.com/github/dustinspecker/awesome-mod/badges/gpa.svg)]' +
           '(https://codeclimate.com/github/dustinspecker/awesome-mod)'
-      );
-    });
+      )
+    })
 
     it('should insert dependencies badge', () => {
       assert.fileContent(
         'README.md',
         '[![Dependencies](https://david-dm.org/dustinspecker/awesome-mod.svg)]' +
           '(https://david-dm.org/dustinspecker/awesome-mod/#info=dependencies&view=table)'
-      );
-    });
+      )
+    })
 
     it('should insert dev dependencies badge', () => {
       assert.fileContent(
         'README.md',
         '[![DevDependencies](https://david-dm.org/dustinspecker/awesome-mod/dev-status.svg)]' +
           '(https://david-dm.org/dustinspecker/awesome-mod/#info=devDependencies&view=table)'
-      );
-    });
+      )
+    })
 
     it('should insert description', () => {
-      assert.fileContent('README.md', '> An awesome project.');
-    });
+      assert.fileContent('README.md', '> An awesome project.')
+    })
 
     it('should insert install step', () => {
-      assert.fileContent('README.md', 'npm install --save awesome-mod');
-    });
+      assert.fileContent('README.md', 'npm install --save awesome-mod')
+    })
 
     it('should insert usage require', () => {
-      assert.fileContent('README.md', `var awesomeMod = require('awesome-mod');`);
-    });
+      assert.fileContent('README.md', `var awesomeMod = require('awesome-mod')`)
+    })
 
     it('should insert copyright info', () => {
-      assert.fileContent('README.md', 'MIT © [Dustin Specker](https://github.com/dustinspecker');
-    });
-  });
+      assert.fileContent('README.md', 'MIT © [Dustin Specker](https://github.com/dustinspecker')
+    })
+  })
 
   describe('test/test.js', () => {
     it('should require project', () => {
-      assert.fileContent('test/test.js', `import awesomeMod from '../lib/';`);
-    });
+      assert.fileContent('test/test.js', `import awesomeMod from '../lib/'`)
+    })
 
     it('should describe project', () => {
-      assert.fileContent('test/test.js', `describe('awesome-mod', () => {`);
-    });
+      assert.fileContent('test/test.js', `describe('awesome-mod', () => {`)
+    })
 
     it('should expect to be defined', () => {
-      assert.fileContent('test/test.js', 'expect(awesomeMod()).to.be.defined();');
-    });
-  });
-});
+      assert.fileContent('test/test.js', 'expect(awesomeMod()).to.be.defined()')
+    })
+  })
+})

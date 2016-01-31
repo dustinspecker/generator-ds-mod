@@ -1,14 +1,14 @@
-'use strict';
-import camelCase from 'camelcase';
-import generator from 'yeoman-generator';
-import {join, sep} from 'path';
-import yosay from 'yosay';
+'use strict'
+import camelCase from 'camelcase'
+import generator from 'yeoman-generator'
+import {join, sep} from 'path'
+import yosay from 'yosay'
 
 module.exports = generator.Base.extend({
   prompting() {
-    const done = this.async();
+    const done = this.async()
 
-    this.log(yosay('Welcome to ds-mod!'));
+    this.log(yosay('Welcome to ds-mod!'))
 
     this.prompt([
       {
@@ -45,30 +45,29 @@ module.exports = generator.Base.extend({
         default: this.config.get('url')
       }
     ], props => {
-      props.camelCase = camelCase(props.projectName);
-      this.props = props;
-      done();
-    });
+      props.camelCase = camelCase(props.projectName)
+      this.props = props
+      done()
+    })
   },
 
   writing() {
-    const self = this;
+    const self = this
 
-    function copy(file) {
-      let dest, src;
+    const copy = file => {
+      let dest, src
 
       if (typeof file === 'string') {
-        return self.copyFile(file);
+        return self.copyFile(file)
       }
 
       // if file is an object
-      src = Object.keys(file)[0];
-      dest = file[src];
-      self.copyFile(src, dest);
+      src = Object.keys(file)[0]
+      dest = file[src]
+      self.copyFile(src, dest)
     }
 
-    [
-      {gitignore: '.gitignore'},
+    ;[{gitignore: '.gitignore'},
       {npmignore: '.npmignore'},
       '.travis.yml',
       '_gulpfile.babel.js',
@@ -77,24 +76,22 @@ module.exports = generator.Base.extend({
       '_package.json',
       '_README.md',
       {'_test.js': join('test', 'test.js')}
-    ].forEach(copy);
+    ].forEach(copy)
 
     // use the project's files instead of the template directory
     // go up one directory because compiled code goes into ../../app/
-    self.sourceRoot(join(__dirname, '../'));
-    [
+    self.sourceRoot(join(__dirname, '../'))
+    ;[
       '.babelrc',
       '.editorconfig',
       '.eslintrc',
-      '.gitattributes',
-      '.jscsrc',
-      '.jshintrc'
-    ].forEach(copy);
+      '.gitattributes'
+    ].forEach(copy)
   },
 
   install() {
     if (!this.options['skip-install']) {
-      this.installDependencies({bower: false});
+      this.installDependencies({bower: false})
     }
   },
 
@@ -107,13 +104,13 @@ module.exports = generator.Base.extend({
     // yeoman runs all methods by default
     // this prevents yeoman from executing this as part of the context loop
     if (arguments.length === 0) {
-      return;
+      return
     }
 
     this.fs.copyTpl(
       this.templatePath(src),
       this.destinationPath(dest.replace(/^_/, '')),
       this.props
-    );
+    )
   }
-});
+})
