@@ -1,10 +1,8 @@
-/* global describe, it */
 'use strict'
-import <%= camelCase %> from '../lib/'
-import {expect} from 'chai'
+import test from 'ava'
 
-describe('<%= projectName %>', () => {
-  it('should do something awesome', () => {
-    expect(<%= camelCase %>()).to.be.defined()
-  })
+import <%= camelCase %> from '../lib/'
+
+test('it should do something awesome', t => {
+  t.ok(!!<%=camelCase %>())
 })

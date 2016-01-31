@@ -75,7 +75,7 @@ module.exports = generator.Base.extend({
       '_LICENSE.md',
       '_package.json',
       '_README.md',
-      {'_test.js': join('test', 'test.js')}
+      {'_test.js': join('tests', 'test.js')}
     ].forEach(copy)
 
     // use the project's files instead of the template directory

@@ -102,7 +102,7 @@ describe('App generator', () => {
   it('should create project files', () => {
     assert.file([
       'src/index.js',
-      'test/test.js',
+      'tests/test.js',
       '.babelrc',
       '.editorconfig',
       '.eslintrc',
@@ -229,17 +229,13 @@ describe('App generator', () => {
     })
   })
 
-  describe('test/test.js', () => {
+  describe('tests/test.js', () => {
     it('should require project', () => {
-      assert.fileContent('test/test.js', `import awesomeMod from '../lib/'`)
-    })
-
-    it('should describe project', () => {
-      assert.fileContent('test/test.js', `describe('awesome-mod', () => {`)
+      assert.fileContent('tests/test.js', `import awesomeMod from '../lib/'`)
     })
 
     it('should expect to be defined', () => {
-      assert.fileContent('test/test.js', 'expect(awesomeMod()).to.be.defined()')
+      assert.fileContent('tests/test.js', 't.ok(!!awesomeMod())')
     })
   })
 })
