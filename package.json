@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "babel-core": "^6.0.12",
-    "babel-eslint": "^4.1.3",
+    "babel-eslint": "^4.1.8",
     "babel-preset-es2015": "^6.0.12",
     "coveralls": "^2.11.2",
     "del": "^2.0.0",
