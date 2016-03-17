@@ -55,15 +55,13 @@ module.exports = generator.Base.extend({
     const self = this
 
     const copy = file => {
-      let dest, src
-
       if (typeof file === 'string') {
         return self.copyFile(file)
       }
 
       // if file is an object
-      src = Object.keys(file)[0]
-      dest = file[src]
+      const src = Object.keys(file)[0]
+      const dest = file[src]
       self.copyFile(src, dest)
     }
 

@@ -33,7 +33,6 @@ gulp.task('alex', () =>
 gulp.task('lint', ['alex'], () =>
   gulp.src([configFiles, srcFiles, testFiles])
     .pipe(eslint())
-    .pipe(eslint.formatEach('./node_modules/eslint-path-formatter'))
     .pipe(gulpIf(!watching, eslint.failOnError()))
 )
 

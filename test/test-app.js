@@ -136,15 +136,15 @@ describe('App generator', () => {
       )
     })
 
-    it(`should insert author's name`, () => {
+    it('should insert author\'s name', () => {
       assert.fileContent('package.json', '"name": "Dustin Specker",')
     })
 
-    it(`should insert author's email`, () => {
+    it('should insert author\'s email', () => {
       assert.fileContent('package.json', '"email": "DustinSpecker@DustinSpecker.com",')
     })
 
-    it(`should insert author's URL`, () => {
+    it('should insert author\'s URL', () => {
       assert.fileContent('package.json', '"url": "https://github.com/dustinspecker"')
     })
   })
@@ -210,7 +210,7 @@ describe('App generator', () => {
     })
 
     it('should insert usage require', () => {
-      assert.fileContent('README.md', `var awesomeMod = require('awesome-mod')`)
+      assert.fileContent('README.md', 'var awesomeMod = require(\'awesome-mod\')')
     })
 
     it('should insert copyright info', () => {
@@ -220,7 +220,7 @@ describe('App generator', () => {
 
   describe('tests/test.js', () => {
     it('should require project', () => {
-      assert.fileContent('tests/test.js', `import awesomeMod from '../lib/'`)
+      assert.fileContent('tests/test.js', 'import awesomeMod from \'../lib/\'')
     })
 
     it('should expect to be defined', () => {
