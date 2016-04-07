@@ -12,7 +12,7 @@ npm install --save <%= projectName %>
 
 ## Usage
 ```javascript
-var <%= camelCase %> = require('<%= projectName %>');
+import <%= camelCase %> from '<%= projectName %>'
 
 // ... add awesome stuff
 ```

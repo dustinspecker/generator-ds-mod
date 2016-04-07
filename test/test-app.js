@@ -209,8 +209,8 @@ describe('App generator', () => {
       assert.fileContent('README.md', 'npm install --save awesome-mod')
     })
 
-    it('should insert usage require', () => {
-      assert.fileContent('README.md', 'var awesomeMod = require(\'awesome-mod\')')
+    it('should insert usage import', () => {
+      assert.fileContent('README.md', 'import awesomeMod from \'awesome-mod\'')
     })
 
     it('should insert copyright info', () => {
