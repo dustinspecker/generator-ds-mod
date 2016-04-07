@@ -17,5 +17,8 @@ import <%= camelCase %> from '<%= projectName %>'
 // ... add awesome stuff
 ```
 
+## API
+### <%= camelCase %>()
+
 ## LICENSE
 MIT © [<%= fullName %>](https://github.com/<%= githubUser %>)

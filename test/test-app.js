@@ -213,6 +213,10 @@ describe('App generator', () => {
       assert.fileContent('README.md', 'import awesomeMod from \'awesome-mod\'')
     })
 
+    it('should insert API', () => {
+      assert.fileContent('README.md', '### awesomeMod()')
+    })
+
     it('should insert copyright info', () => {
       assert.fileContent('README.md', 'MIT © [Dustin Specker](https://github.com/dustinspecker')
     })
