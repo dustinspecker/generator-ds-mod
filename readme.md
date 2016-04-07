@@ -32,13 +32,10 @@ root/
 ├── .eslintrc
 ├── .gitattributes
 ├── .gitignore
-├── .jscsrc
-├── .jshintrc
 ├── .travis.yml
-├── Gulpfile.js
-├── LICENSE.md
+├── license.md
 ├── package.json
-└── README.md
+└── readme.md
 ```
 
 ## LICENSE
