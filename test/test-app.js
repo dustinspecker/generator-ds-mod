@@ -110,14 +110,14 @@ describe('App generator', () => {
       '.gitignore',
       '.npmignore',
       '.travis.yml',
-      'LICENSE.md',
+      'license.md',
       'package.json',
-      'README.md'
+      'readme.md'
     ])
   })
 
-  it('should insert full name into LICENSE.md', () => {
-    assert.fileContent('LICENSE.md', 'Dustin Specker')
+  it('should insert full name into license.md', () => {
+    assert.fileContent('license.md', 'Dustin Specker')
   })
 
   describe('package.json', () => {
@@ -149,21 +149,21 @@ describe('App generator', () => {
     })
   })
 
-  describe('README.md', () => {
+  describe('readme.md', () => {
     it('should insert project name as title', () => {
-      assert.fileContent('README.md', '# awesome-mod')
+      assert.fileContent('readme.md', '# awesome-mod')
     })
 
     it('should insert npm badge', () => {
       assert.fileContent(
-        'README.md',
+        'readme.md',
         '[![NPM version](https://badge.fury.io/js/awesome-mod.svg)](https://badge.fury.io/js/awesome-mod)'
       )
     })
 
     it('should insert Travis badge', () => {
       assert.fileContent(
-        'README.md',
+        'readme.md',
         '[![Build Status](https://travis-ci.org/dustinspecker/awesome-mod.svg)](https://travis-ci.org/' +
           'dustinspecker/awesome-mod)'
       )
@@ -171,7 +171,7 @@ describe('App generator', () => {
 
     it('should insert Coveralls badge', () => {
       assert.fileContent(
-        'README.md',
+        'readme.md',
         '[![Coverage Status](https://img.shields.io/coveralls/dustinspecker/awesome-mod.svg)]' +
           '(https://coveralls.io/r/dustinspecker/awesome-mod?branch=master)'
       )
@@ -179,7 +179,7 @@ describe('App generator', () => {
 
     it('should insert code climate badge', () => {
       assert.fileContent(
-        'README.md',
+        'readme.md',
         '[![Code Climate](https://codeclimate.com/github/dustinspecker/awesome-mod/badges/gpa.svg)]' +
           '(https://codeclimate.com/github/dustinspecker/awesome-mod)'
       )
@@ -187,7 +187,7 @@ describe('App generator', () => {
 
     it('should insert dependencies badge', () => {
       assert.fileContent(
-        'README.md',
+        'readme.md',
         '[![Dependencies](https://david-dm.org/dustinspecker/awesome-mod.svg)]' +
           '(https://david-dm.org/dustinspecker/awesome-mod/#info=dependencies&view=table)'
       )
@@ -195,30 +195,30 @@ describe('App generator', () => {
 
     it('should insert dev dependencies badge', () => {
       assert.fileContent(
-        'README.md',
+        'readme.md',
         '[![DevDependencies](https://david-dm.org/dustinspecker/awesome-mod/dev-status.svg)]' +
           '(https://david-dm.org/dustinspecker/awesome-mod/#info=devDependencies&view=table)'
       )
     })
 
     it('should insert description', () => {
-      assert.fileContent('README.md', '> An awesome project.')
+      assert.fileContent('readme.md', '> An awesome project.')
     })
 
     it('should insert install step', () => {
-      assert.fileContent('README.md', 'npm install --save awesome-mod')
+      assert.fileContent('readme.md', 'npm install --save awesome-mod')
     })
 
     it('should insert usage import', () => {
-      assert.fileContent('README.md', 'import awesomeMod from \'awesome-mod\'')
+      assert.fileContent('readme.md', 'import awesomeMod from \'awesome-mod\'')
     })
 
     it('should insert API', () => {
-      assert.fileContent('README.md', '### awesomeMod()')
+      assert.fileContent('readme.md', '### awesomeMod()')
     })
 
     it('should insert copyright info', () => {
-      assert.fileContent('README.md', 'MIT © [Dustin Specker](https://github.com/dustinspecker')
+      assert.fileContent('readme.md', 'MIT © [Dustin Specker](https://github.com/dustinspecker')
     })
   })
 
