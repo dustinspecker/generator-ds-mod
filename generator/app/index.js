@@ -69,9 +69,9 @@ module.exports = generator.Base.extend({
       {npmignore: '.npmignore'},
       '.travis.yml',
       {'index.js': join('src', 'index.js')},
-      '_LICENSE.md',
+      '_license.md',
       '_package.json',
-      '_README.md',
+      '_readme.md',
       {'_test.js': join('tests', 'test.js')}
     ].forEach(copy)
 
