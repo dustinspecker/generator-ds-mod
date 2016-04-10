@@ -1,7 +1,11 @@
 # generator-ds-mod
-[![NPM version](https://badge.fury.io/js/generator-ds-mod.svg)](https://badge.fury.io/js/generator-ds-mod) [![Build Status](https://travis-ci.org/dustinspecker/generator-ds-mod.svg)](https://travis-ci.org/dustinspecker/generator-ds-mod) [![Coverage Status](https://img.shields.io/coveralls/dustinspecker/generator-ds-mod.svg)](https://coveralls.io/r/dustinspecker/generator-ds-mod?branch=master)
+[![NPM version](https://badge.fury.io/js/generator-ds-mod.svg)](https://badge.fury.io/js/generator-ds-mod)
+[![Build Status](https://travis-ci.org/dustinspecker/generator-ds-mod.svg)](https://travis-ci.org/dustinspecker/generator-ds-mod)
+[![Coverage Status](https://img.shields.io/coveralls/dustinspecker/generator-ds-mod.svg)](https://coveralls.io/r/dustinspecker/generator-ds-mod?branch=master)
 
-[![Code Climate](https://codeclimate.com/github/dustinspecker/generator-ds-mod/badges/gpa.svg)](https://codeclimate.com/github/dustinspecker/generator-ds-mod) [![Dependencies](https://david-dm.org/dustinspecker/generator-ds-mod.svg)](https://david-dm.org/dustinspecker/generator-ds-mod/#info=dependencies&view=table) [![DevDependencies](https://david-dm.org/dustinspecker/generator-ds-mod/dev-status.svg)](https://david-dm.org/dustinspecker/generator-ds-mod/#info=devDependencies&view=table)
+[![Code Climate](https://codeclimate.com/github/dustinspecker/generator-ds-mod/badges/gpa.svg)](https://codeclimate.com/github/dustinspecker/generator-ds-mod)
+[![Dependencies](https://david-dm.org/dustinspecker/generator-ds-mod.svg)](https://david-dm.org/dustinspecker/generator-ds-mod/#info=dependencies&view=table)
+[![DevDependencies](https://david-dm.org/dustinspecker/generator-ds-mod/dev-status.svg)](https://david-dm.org/dustinspecker/generator-ds-mod/#info=devDependencies&view=table)
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
