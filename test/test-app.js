@@ -132,7 +132,7 @@ describe('App generator', () => {
     it('should insert project repository url', () => {
       assert.fileContent(
         'package.json',
-        '"repository": "dustinspecker/awesome-mod"'
+        '"url": "https://github.com/dustinspecker/awesome-mod.git"'
       )
     })
 

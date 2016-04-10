@@ -10,7 +10,10 @@
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "test": "npm run lint && npm run compile && nyc ava"
   },
-  "repository": "<%= githubUser %>/<%= projectName %>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/<%= githubUser %>/<%= projectName %>.git"
+  },
   "keywords": [],
   "author": {
     "name": "<%= fullName %>",
