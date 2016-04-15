@@ -1,6 +1,6 @@
 # generator-ds-mod
 [![NPM version](https://badge.fury.io/js/generator-ds-mod.svg)](https://badge.fury.io/js/generator-ds-mod)
-[![Build Status](https://travis-ci.org/dustinspecker/generator-ds-mod.svg)](https://travis-ci.org/dustinspecker/generator-ds-mod)
+[![Build Status](https://travis-ci.org/dustinspecker/generator-ds-mod.svg?branch=master)](https://travis-ci.org/dustinspecker/generator-ds-mod)
 [![Coverage Status](https://img.shields.io/coveralls/dustinspecker/generator-ds-mod.svg)](https://coveralls.io/r/dustinspecker/generator-ds-mod?branch=master)
 
 [![Code Climate](https://codeclimate.com/github/dustinspecker/generator-ds-mod/badges/gpa.svg)](https://codeclimate.com/github/dustinspecker/generator-ds-mod)
