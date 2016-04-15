@@ -14,7 +14,10 @@ module.exports = generator.Base.extend({
       {
         name: 'projectName',
         message: 'What is the project name?',
-        default: process.cwd().split(sep).pop()
+        default: process
+          .cwd()
+          .split(sep)
+          .pop()
       },
       {
         name: 'description',
@@ -65,7 +68,8 @@ module.exports = generator.Base.extend({
       self.copyFile(src, dest)
     }
 
-    ;[{gitignore: '.gitignore'},
+    const templateFiles = [
+      {gitignore: '.gitignore'},
       {npmignore: '.npmignore'},
       '.travis.yml',
       {'index.js': join('src', 'index.js')},
@@ -73,17 +77,19 @@ module.exports = generator.Base.extend({
       '_package.json',
       '_readme.md',
       {'_test.js': join('tests', 'test.js')}
-    ].forEach(copy)
+    ]
+    templateFiles.forEach(copy)
 
     // use the project's files instead of the template directory
     // go up one directory because compiled code goes into ../../app/
     self.sourceRoot(join(__dirname, '../'))
-    ;[
+    const rootFiles = [
       '.babelrc',
       '.editorconfig',
       '.eslintrc',
       '.gitattributes'
-    ].forEach(copy)
+    ]
+    rootFiles.forEach(copy)
   },
 
   install() {
@@ -100,7 +106,7 @@ module.exports = generator.Base.extend({
   copyFile(src, dest = src) {
     // yeoman runs all methods by default
     // this prevents yeoman from executing this as part of the context loop
-    if (arguments.length === 0) {
+    if (!src) {
       return
     }
 

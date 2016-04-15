@@ -60,7 +60,10 @@ describe('App generator default projectName', () => {
     // Open to suggestions for a better test
     // Not sure how to stub process.cwd without messing up everything else
     // Also, not sure how to mock a module AND have the mock be used with Yeoman's helpers' run function.
-    const projectName = process.cwd().split(sep).pop()
+    const projectName = process
+      .cwd()
+      .split(sep)
+      .pop()
     assert.fileContent('package.json', `"name": "${projectName}",`)
   })
 })
