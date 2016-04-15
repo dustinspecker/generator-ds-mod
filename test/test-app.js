@@ -167,7 +167,7 @@ describe('App generator', () => {
     it('should insert Travis badge', () => {
       assert.fileContent(
         'readme.md',
-        '[![Build Status](https://travis-ci.org/dustinspecker/awesome-mod.svg)](https://travis-ci.org/' +
+        '[![Build Status](https://travis-ci.org/dustinspecker/awesome-mod.svg?branch=master)](https://travis-ci.org/' +
           'dustinspecker/awesome-mod)'
       )
     })
