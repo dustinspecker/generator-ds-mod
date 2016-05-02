@@ -55,7 +55,7 @@
     "gulp-mocha": "^2.1.0",
     "gulp-plumber": "^1.0.1",
     "semantic-release": "^4.3.5",
-    "sinon": "^1.14.1",
+    "sinon": "^1.17.4",
     "yeoman-assert": "^2.1.1",
     "yeoman-test": "^1.0.0"
   },
