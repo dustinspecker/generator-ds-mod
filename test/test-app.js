@@ -8,7 +8,7 @@ import sinon from 'sinon'
 describe('App Generator with installDependencies', () => {
   let gen
 
-  before(done => {
+  before(() =>
     helpers
       .run(join(__dirname, '../app'))
       .withOptions({
@@ -29,8 +29,8 @@ describe('App Generator with installDependencies', () => {
         gen = generator
         generator.installDependencies = sinon.spy()
       })
-      .on('end', done)
-  })
+      .toPromise()
+  )
 
   it('should install dependencies', () => {
     assert(gen.installDependencies.calledOnce)
@@ -38,7 +38,7 @@ describe('App Generator with installDependencies', () => {
 })
 
 describe('App generator default projectName', () => {
-  before(done => {
+  before(() =>
     helpers
       .run(join(__dirname, '../app'))
       .withPrompts({
@@ -51,10 +51,8 @@ describe('App generator default projectName', () => {
       .withGenerators([
         join(__dirname, '../app')
       ])
-      .on('end', () => {
-        done()
-      })
-  })
+      .toPromise()
+  )
 
   it('should name app after current directory', () => {
     // Open to suggestions for a better test
@@ -71,7 +69,7 @@ describe('App generator default projectName', () => {
 describe('App generator', () => {
   let gen
 
-  before(done => {
+  before(() =>
     helpers
       .run(join(__dirname, '../app'))
       .withPrompts({
@@ -90,8 +88,8 @@ describe('App generator', () => {
         generator.installDependencies = sinon.spy()
         generator.log = sinon.spy()
       })
-      .on('end', done)
-  })
+      .toPromise()
+  )
 
   it('should welcome user', () => {
     assert(gen.log.calledOnce)
