@@ -6,11 +6,9 @@ import yosay from 'yosay'
 
 module.exports = generator.Base.extend({
   prompting() {
-    const done = this.async()
-
     this.log(yosay('Welcome to ds-mod!'))
 
-    this.prompt([
+    return this.prompt([
       {
         name: 'projectName',
         message: 'What is the project name?',
@@ -47,11 +45,11 @@ module.exports = generator.Base.extend({
         message: 'What is your URL?',
         default: this.config.get('url')
       }
-    ], props => {
-      props.camelCase = camelCase(props.projectName)
-      this.props = props
-      done()
-    })
+    ])
+      .then(props => {
+        props.camelCase = camelCase(props.projectName)
+        this.props = props
+      })
   },
 
   writing() {
