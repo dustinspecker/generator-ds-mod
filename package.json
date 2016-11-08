@@ -31,7 +31,7 @@
     ".gitattributes"
   ],
   "dependencies": {
-    "camelcase": "^3.0.0",
+    "camelcase": "^4.0.0",
     "yeoman-generator": "^0.24.1",
     "yosay": "^1.0.4"
   },
