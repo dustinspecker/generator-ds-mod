@@ -53,7 +53,7 @@
     "gulp-istanbul": "^1.1.1",
     "gulp-mocha": "^3.0.1",
     "gulp-plumber": "^1.0.1",
-    "semantic-release": "^4.3.5",
+    "semantic-release": "^6.3.2",
     "sinon": "^1.14.1",
     "yeoman-assert": "^2.1.1",
     "yeoman-test": "^1.0.0"
